@@ -5,13 +5,30 @@ import App from './App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import { CssBaseline } from '@material-ui/core';
+import { ConnectedRouter } from 'connected-react-router';
+import { history } from 'utils';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <CssBaseline />
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </ConnectedRouter>
+    <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
+  </Provider>,
   document.getElementById('root')
 );
 
